@@ -22,3 +22,4 @@
 
 -   기본적인 기능 공부
     https://labs.phaser.io/
+    https://photonstorm.github.io/phaser3-docs/
