@@ -1,6 +1,6 @@
 export default class Example extends Phaser.Scene {
 	preload() {
-		this.load.image("bunny", "assets/sprites/bunny.png");
+		this.load.image("bunny", "/phaser3/sprite/assets/sprites/bunny.png");
 	}
 
 	create() {
