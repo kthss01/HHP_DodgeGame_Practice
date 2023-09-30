@@ -50,6 +50,8 @@ class Example extends Phaser.Scene {
 
 		this.bullets;
 		this.ship;
+
+		this.lastFired = 0;
 	}
 
 	preload() {
@@ -65,7 +67,7 @@ class Example extends Phaser.Scene {
 		this.cursors = this.input.keyboard.createCursorKeys();
 	}
 
-	update() {
+	update(time, delta) {
 		this.ship.setVelocity(0);
 
 		if (this.cursors.left.isDown) {
@@ -74,8 +76,12 @@ class Example extends Phaser.Scene {
 			this.ship.setVelocityX(300);
 		}
 
-		if (this.cursors.up.isDown) {
+		if (this.cursors.up.isDown && time > this.lastFired) {
+			console.log(time);
+
 			this.bullets.fireBullet(this.ship.x, this.ship.y);
+
+			this.lastFired = time + 50;
 		}
 
 		// if (this.cursors.up.isDown) {
