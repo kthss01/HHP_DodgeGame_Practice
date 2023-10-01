@@ -46,6 +46,8 @@ export default class MainScene extends Phaser.Scene {
 			(gameObject1, gameObject2, body1, body2) => {
 				gameObject1.setAlpha(0.5);
 				gameObject2.setAlpha(0.5);
+
+				this.pause();
 			}
 		);
 	}
