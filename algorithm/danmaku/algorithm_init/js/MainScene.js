@@ -23,18 +23,19 @@ export default class MainScene extends Phaser.Scene {
 		this.cursors = this.input.keyboard.createCursorKeys();
 
 		// this.bulletFire();
+		this.bullets.danmakuFire();
 
 		this.graphics = this.add.graphics({
 			lineStyle: { width: 10, color: 0xffdd00, alpha: 0.5 },
 		});
 		this.line = new Phaser.Geom.Line();
 
-		this.angle = -3.14 / 2;
+		this.angle = -90;
 		Phaser.Geom.Line.SetToAngle(
 			this.line,
 			this.ship.x,
 			this.ship.y - 10,
-			this.angle,
+			Phaser.Math.DEG_TO_RAD * this.angle,
 			64
 		);
 	}
@@ -44,22 +45,22 @@ export default class MainScene extends Phaser.Scene {
 
 		if (this.cursors.left.isDown) {
 			// this.ship.setVelocityX(-300);
-			this.angle -= 0.01;
+			this.angle -= 1;
 			Phaser.Geom.Line.SetToAngle(
 				this.line,
 				this.ship.x,
 				this.ship.y - 10,
-				this.angle,
+				Phaser.Math.DEG_TO_RAD * this.angle,
 				64
 			);
 		} else if (this.cursors.right.isDown) {
 			// this.ship.setVelocityX(300);
-			this.angle += 0.01;
+			this.angle += 1;
 			Phaser.Geom.Line.SetToAngle(
 				this.line,
 				this.ship.x,
 				this.ship.y - 10,
-				this.angle,
+				Phaser.Math.DEG_TO_RAD * this.angle,
 				64
 			);
 		}

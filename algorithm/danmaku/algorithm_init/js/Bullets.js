@@ -11,11 +11,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 		this.setActive(true);
 		this.setVisible(true);
 
-		this.scene.physics.velocityFromAngle(
-			Phaser.Math.RAD_TO_DEG * angle,
-			speed,
-			this.body.velocity
-		);
+		this.scene.physics.velocityFromAngle(angle, speed, this.body.velocity);
 		// this.scene.physics.velocityFromRotation(angle, speed, this.body.velocity); // radian으로 회전
 	}
 
@@ -49,4 +45,22 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 			bullet.fire(x, y, angle);
 		}
 	}
+
+	danmakuFire = () => {
+		// 시간에 따른 발사
+		this.scene.time.addEvent({
+			delay: 100,
+			startAt: 100,
+			repeat: this.getLength() - 1,
+			callback: () => {
+				// const ball = balls.getFirstDead();
+
+				// ball.setActive(true);
+
+				// this.physics.velocityFromAngle(cannon.angle, 300, ball.body.velocity);
+
+				this.fireBullet(300, 0, 90);
+			},
+		});
+	};
 }
