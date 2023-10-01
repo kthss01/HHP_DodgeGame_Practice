@@ -105,6 +105,9 @@ export default class MainScene extends Phaser.Scene {
 		// }
 
 		this.score.setText(`Left Bullet : ${this.bullets.countActive(false)}`);
+		if (this.bullets.countActive(false) == 0) {
+			this.pause();
+		}
 	}
 
 	// bulletFire = () => {
