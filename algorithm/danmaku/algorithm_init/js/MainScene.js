@@ -25,55 +25,57 @@ export default class MainScene extends Phaser.Scene {
 		// this.bulletFire();
 		this.bullets.danmakuFire();
 
-		this.graphics = this.add.graphics({
-			lineStyle: { width: 10, color: 0xffdd00, alpha: 0.5 },
-		});
-		this.line = new Phaser.Geom.Line();
+		// this.graphics = this.add.graphics({
+		// 	lineStyle: { width: 10, color: 0xffdd00, alpha: 0.5 },
+		// });
+		// this.line = new Phaser.Geom.Line();
 
-		this.angle = -90;
-		Phaser.Geom.Line.SetToAngle(
-			this.line,
-			this.ship.x,
-			this.ship.y - 10,
-			Phaser.Math.DEG_TO_RAD * this.angle,
-			64
-		);
+		// this.angle = -90;
+		// Phaser.Geom.Line.SetToAngle(
+		// 	this.line,
+		// 	this.ship.x,
+		// 	this.ship.y - 10,
+		// 	Phaser.Math.DEG_TO_RAD * this.angle,
+		// 	64
+		// );
 	}
 
 	update(time, delta) {
 		this.ship.setVelocity(0);
 
 		if (this.cursors.left.isDown) {
-			// this.ship.setVelocityX(-300);
-			this.angle -= 1;
-			Phaser.Geom.Line.SetToAngle(
-				this.line,
-				this.ship.x,
-				this.ship.y - 10,
-				Phaser.Math.DEG_TO_RAD * this.angle,
-				64
-			);
+			this.ship.setVelocityX(-300);
+
+			// this.angle -= 1;
+			// Phaser.Geom.Line.SetToAngle(
+			// 	this.line,
+			// 	this.ship.x,
+			// 	this.ship.y - 10,
+			// 	Phaser.Math.DEG_TO_RAD * this.angle,
+			// 	64
+			// );
 		} else if (this.cursors.right.isDown) {
-			// this.ship.setVelocityX(300);
-			this.angle += 1;
-			Phaser.Geom.Line.SetToAngle(
-				this.line,
-				this.ship.x,
-				this.ship.y - 10,
-				Phaser.Math.DEG_TO_RAD * this.angle,
-				64
-			);
+			this.ship.setVelocityX(300);
+
+			// this.angle += 1;
+			// Phaser.Geom.Line.SetToAngle(
+			// 	this.line,
+			// 	this.ship.x,
+			// 	this.ship.y - 10,
+			// 	Phaser.Math.DEG_TO_RAD * this.angle,
+			// 	64
+			// );
 		}
 
-		if (this.cursors.left.isUp || this.cursors.right.isUp) {
-			this.graphics.clear().strokeLineShape(this.line);
-		}
+		// if (this.cursors.left.isUp || this.cursors.right.isUp) {
+		// 	this.graphics.clear().strokeLineShape(this.line);
+		// }
 
-		if (this.cursors.up.isDown && time > this.lastFired) {
-			this.bullets.fireBullet(this.ship.x, this.ship.y, this.angle);
+		// if (this.cursors.up.isDown && time > this.lastFired) {
+		// 	this.bullets.fireBullet(this.ship.x, this.ship.y, this.angle);
 
-			this.lastFired = time + 50;
-		}
+		// 	this.lastFired = time + 50;
+		// }
 
 		// if (this.cursors.up.isDown) {
 		// 	this.ship.setVelocityY(-300);

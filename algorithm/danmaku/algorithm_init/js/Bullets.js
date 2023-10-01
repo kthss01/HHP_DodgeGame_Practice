@@ -30,7 +30,7 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 		super(scene.physics.world, scene);
 
 		this.createMultiple({
-			frameQuantity: 5000,
+			frameQuantity: 500,
 			key: "bullet",
 			active: false,
 			visible: false,
@@ -53,14 +53,14 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 			startAt: 100,
 			repeat: this.getLength() - 1,
 			callback: () => {
-				// const ball = balls.getFirstDead();
+				const x = this.getRandomInt(600);
 
-				// ball.setActive(true);
-
-				// this.physics.velocityFromAngle(cannon.angle, 300, ball.body.velocity);
-
-				this.fireBullet(300, 0, 90);
+				this.fireBullet(x, -25, 90);
 			},
 		});
+	};
+
+	getRandomInt = (max) => {
+		return Math.floor(Math.random() * max);
 	};
 }
