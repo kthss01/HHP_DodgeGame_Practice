@@ -1,10 +1,12 @@
-const MAX_BULLET_COUNT = 5000;
+const MAX_BULLET_COUNT = 10000;
 
 class Bullet extends Phaser.Physics.Arcade.Sprite {
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x, y, texture, frame);
 
 		this.scene = scene;
+
+		this.setScale(0.5, 0.5);
 	}
 
 	fire(x, y, angle, speed = 300) {
@@ -56,7 +58,7 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 		this.angle = 90;
 		this.angleSpeed = 25;
 		this.speed = 100;
-		this.delay = 200; // 발사 딜레이
+		this.delay = 50; // 발사 딜레이
 
 		this.oneShootCnt = 4; // 한번에 발사 수
 		this.shootCnt = 0;
