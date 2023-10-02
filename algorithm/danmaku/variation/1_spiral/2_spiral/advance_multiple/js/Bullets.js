@@ -1,4 +1,4 @@
-const MAX_BULLET_COUNT = 5000;
+const MAX_BULLET_COUNT = 1000;
 
 class Bullet extends Phaser.Physics.Arcade.Sprite {
 	constructor(scene, x, y, texture, frame) {
@@ -55,29 +55,36 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 	danmakuFire = () => {
 		this.angle = 80;
 		this.angleSpeed = 20;
-		this.speed = 75;
+		this.speed = 100;
 		this.delay = 100; // 발사 딜레이
 
-		this.cnt = 4; // 한번에 발사 수
+		this.oneShootCnt = 4; // 한번에 발사 수
+		this.shootCnt = 0;
 
 		// 시간에 따른 발사
 		this.scene.time.addEvent({
 			delay: this.delay,
 			startAt: 0,
-			repeat: this.getLength() / this.cnt - 1,
+			repeat: this.getLength() / this.oneShootCnt - 1,
 			callback: () => {
 				const x = 300;
 
-				for (let i = 0; i < this.cnt; i++) {
+				for (let i = 0; i < this.oneShootCnt; i++) {
 					this.fireBullet(
 						x,
 						25,
-						this.angle + (i / this.cnt) * 360,
+						this.angle + (i / this.oneShootCnt) * 360,
 						this.speed
 					);
+
+					this.shootCnt += 1;
 				}
 
-				this.angle = this.angle + this.angleSpeed;
+				if (this.shootCnt < this.getLength() / 2) {
+					this.angle = this.angle + this.angleSpeed;
+				} else {
+					this.angle = this.angle - this.angleSpeed;
+				}
 			},
 		});
 	};
