@@ -11,7 +11,11 @@ export default class MainScene extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image("bullet", "assets/sprites/bullet7.png");
+		// this.load.image("bullet", "assets/sprites/bullet7.png");
+		this.load.spritesheet("bullet", "assets/sprites/balls.png", {
+			frameWidth: 17,
+			frameHeight: 17,
+		});
 		this.load.image("ship", "assets/sprites/bsquadron1.png");
 	}
 

@@ -1,8 +1,8 @@
 const MAX_BULLET_COUNT = 5000;
 
 class Bullet extends Phaser.Physics.Arcade.Sprite {
-	constructor(scene, x, y) {
-		super(scene, x, y, "bullet");
+	constructor(scene, x, y, texture, frame) {
+		super(scene, x, y, texture, frame);
 
 		this.scene = scene;
 	}
@@ -32,12 +32,16 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 		super(scene.physics.world, scene);
 
 		this.createMultiple({
-			frameQuantity: MAX_BULLET_COUNT,
+			quantity: MAX_BULLET_COUNT,
 			key: "bullet",
+			frame: 0,
+			// randomFrame: true,
 			active: false,
 			visible: false,
 			classType: Bullet,
 		});
+
+		// console.log(this.getLength());
 	}
 
 	fireBullet(x, y, angle, speed) {
