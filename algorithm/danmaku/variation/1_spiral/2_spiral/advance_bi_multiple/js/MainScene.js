@@ -23,7 +23,7 @@ export default class MainScene extends Phaser.Scene {
 		this.bullets1 = new Bullets(this);
 		// this.bullets2 = new Bullets(this);
 
-		this.ship = this.physics.add.image(300, 500, "ship");
+		this.ship = this.physics.add.image(300, 550, "ship");
 
 		this.cursors = this.input.keyboard.createCursorKeys();
 

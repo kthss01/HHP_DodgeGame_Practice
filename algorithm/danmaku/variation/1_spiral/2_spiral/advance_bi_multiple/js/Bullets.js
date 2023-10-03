@@ -57,8 +57,8 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 	}
 
 	danmakuFire = () => {
-		this.angle = 52.5;
-		this.angle2 = -52.5;
+		this.angle = -52.5;
+		this.angle2 = 52.5;
 		this.angleSpeed = 30;
 		this.angleSpeed2 = 30;
 		this.speed = 100;
@@ -87,15 +87,39 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 					this.shootCnt += 1;
 				}
 
+				for (let i = 0; i < this.oneShootCnt; i++) {
+					this.fireBullet(
+						x - 100,
+						200,
+						this.angle + (i / this.oneShootCnt) * 360,
+						this.speed,
+						2
+					);
+
+					this.shootCnt += 1;
+				}
+
 				this.angle = this.angle + this.angleSpeed;
 
 				for (let i = 0; i < this.oneShootCnt; i++) {
 					this.fireBullet(
 						x,
-						100,
+						300,
 						this.angle2 - (i / this.oneShootCnt) * 360,
 						this.speed,
-						2
+						3
+					);
+
+					this.shootCnt += 1;
+				}
+
+				for (let i = 0; i < this.oneShootCnt; i++) {
+					this.fireBullet(
+						x + 100,
+						200,
+						this.angle2 - (i / this.oneShootCnt) * 360,
+						this.speed,
+						4
 					);
 
 					this.shootCnt += 1;
