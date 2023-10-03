@@ -21,7 +21,7 @@ export default class MainScene extends Phaser.Scene {
 
 	create() {
 		this.bullets1 = new Bullets(this);
-		this.bullets2 = new Bullets(this);
+		// this.bullets2 = new Bullets(this);
 
 		this.ship = this.physics.add.image(300, 500, "ship");
 
@@ -29,7 +29,7 @@ export default class MainScene extends Phaser.Scene {
 
 		// this.bulletFire();
 		this.bullets1.danmakuFire(true);
-		this.bullets2.danmakuFire(false);
+		// this.bullets2.danmakuFire(false);
 
 		// this.graphics = this.add.graphics({
 		// 	lineStyle: { width: 10, color: 0xffdd00, alpha: 0.5 },
